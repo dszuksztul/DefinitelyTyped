@@ -1,5 +1,10 @@
-///<reference path="../../es6-promise/es6-promise.d.ts"/>
-///<reference path="../../jquery/jquery.d.ts"/>
+// Type definitions for browser-metrics
+// Project: https://bitbucket.org/atlassian/browser-metrics
+// Definitions by: Bradley Ayers <https://github.com/bradleyayers>
+// Definitions: https://github.com/bradleyayers/DefinitelyTyped
+
+///<reference path="../es6-promise/es6-promise.d.ts"/>
+///<reference path="../jquery/jquery.d.ts"/>
 declare module 'internal/browser-metrics' {
     type CSSSelector = string;
 
