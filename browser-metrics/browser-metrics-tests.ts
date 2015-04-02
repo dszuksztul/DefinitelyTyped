@@ -15,7 +15,7 @@ metrics.start({
     ready: [".something"]
 });
 
-metrics.stop({key: "foo"});
+metrics.end({key: "foo"});
 
 metrics.addReporter(function (navigationEvent) {
     navigationEvent.end;

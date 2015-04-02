@@ -19,7 +19,7 @@ declare module 'internal/browser-metrics' {
         ready?: (CSSSelector | CSSSelector[] | ReadyRule[]);
     }
 
-    export interface StopOptions {
+    export interface EndOptions {
         key: string;
     }
 
@@ -39,6 +39,6 @@ declare module 'internal/browser-metrics' {
     }
 
     export function start(options: StartOptions): void;
-    export function stop(options: StopOptions): void;
+    export function end(options: EndOptions): void;
     export function addReporter(reporter: Reporter): void;
 }
