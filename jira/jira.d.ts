@@ -9,9 +9,10 @@
  * module: jira/util/events
  */
 declare module "jira/util/events" {
-    export function bind(eventName: string, callback: (event: JQueryEventObject) => any): void;
-    export function unbind(eventName: string, callback: (event: JQueryEventObject) => any): void;
-    export function trigger(eventName: string, arguments: any): void;
+    export function bind(eventName: string, callback: (event: JQueryEventObject, ...args: any[]) => any): void;
+    export function unbind(eventName: string, callback: (event: JQueryEventObject, ...args: any[]) => any): void;
+    export function trigger(eventName: string | JQueryEventObject): void;
+    export function trigger(eventName: string | JQueryEventObject, arguments: any): void;
 }
 
 
@@ -99,11 +100,31 @@ declare module "jira/util/events" {
 
 
 /*
+ * AUI Dropdown 2
+ */
+declare module "aui" {
+    export interface AUIDropdown2Options {
+        selectFirst: boolean;
+    }
+}
+
+//interface JQuery {
+//    on(events: "aui-dropdown2-show", handler: (eventObject: JQueryEventObject, options: aui.AUIDropdown2Options) => any): JQuery;
+//}
+
+// jira/util/events#bind is basically a mirror of JQuery#on
+declare module "jira/util/events" {
+    import aui = require("aui");
+    export function bind(eventName: "aui-dropdown2-show", callback: (event: JQueryEventObject, dialog: aui.AUIDropdown2Options) => any): void;
+}
+
+
+/*
  * other general stuff that doesn't fall into the above modules
  */
 declare module "jira/util/events" {
     // Attach a callback when an application header menu is clicked.
-    export function bind(eventName: 'aui-dropdown2-show-before', callback: (event: JQueryEventObject, menuId: string) => any): void;
+    export function bind(eventName: 'aui-dropdown2-show-before', callback: (event: JQueryEventObject) => any): void;
     // Attach a callback when an application header menu is actually presented.
-    export function bind(eventName: 'aui-dropdown2-show-after', callback: (event: JQueryEventObject, menuId: string) => any): void;
+    export function bind(eventName: 'aui-dropdown2-show-after', callback: (event: JQueryEventObject) => any): void;
 }
