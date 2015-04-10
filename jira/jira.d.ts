@@ -118,6 +118,27 @@ declare module "jira/util/events" {
     export function bind(eventName: "aui-dropdown2-show", callback: (event: JQueryEventObject, dialog: aui.AUIDropdown2Options) => any): void;
 }
 
+/*
+ * WRM
+ */
+declare module WRM {
+    export module data {
+        export function claim(key: string): any;
+    }
+}
+
+/*
+ * JIRA browser metrics
+ */
+declare module WRM {
+    export module data {
+        export function claim(key: 'com.atlassian.jira.browsermetrics:browser-metrics-integration.scm-commit-id'): string;
+    }
+}
+
+interface Window {
+    WRM: typeof WRM;
+}
 
 /*
  * other general stuff that doesn't fall into the above modules

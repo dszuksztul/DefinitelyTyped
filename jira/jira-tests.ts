@@ -20,3 +20,9 @@ Events.bind("aui-dropdown2-show-after", (event: JQueryEventObject) => {});
 
 // aui dialog 2
 Events.bind("aui-dropdown2-show", (event: JQueryEventObject, options: aui.AUIDropdown2Options) => {});
+
+// WRM
+WRM.data.claim("foo");
+
+// JIRA browser metrics
+var commitId: string = WRM.data.claim("com.atlassian.jira.browsermetrics:browser-metrics-integration.scm-commit-id");
