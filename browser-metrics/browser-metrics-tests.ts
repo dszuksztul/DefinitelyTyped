@@ -26,6 +26,16 @@ metrics.addReporter(function (navigationEvent) {
 });
 
 metrics.addReporter(function (navigationEvent) {
+    return {
+        "array": <any[]>[],
+        "object": {},
+        "number": 1,
+        "boolean": true,
+        "string": ""
+    };
+});
+
+metrics.addReporter(function (navigationEvent) {
     return new Promise<metrics.Report>(function (resolve) {
         resolve({});
     });

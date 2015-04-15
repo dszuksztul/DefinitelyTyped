@@ -6,7 +6,7 @@
 ///<reference path="../es6-promise/es6-promise.d.ts"/>
 ///<reference path="../jquery/jquery.d.ts"/>
 declare module 'internal/browser-metrics' {
-    type CSSSelector = string;
+type CSSSelector = string;
 
     export interface ReadyRule {
         selector: CSSSelector;
@@ -31,7 +31,7 @@ declare module 'internal/browser-metrics' {
     }
 
     export interface Report {
-        [key: string]: number | string | boolean;
+        [key: string]: any;
     }
 
     export interface Reporter {
