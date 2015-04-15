@@ -149,3 +149,19 @@ declare module "jira/util/events" {
     // Attach a callback when an application header menu is actually presented.
     export function bind(eventName: 'aui-dropdown2-show-after', callback: (event: JQueryEventObject) => any): void;
 }
+
+/*
+ * Growth experiments
+ */
+
+declare module GROW {
+    /**
+     * The names of experiments that are currently running.
+     */
+    export var experimentId: string[];
+}
+
+interface Window {
+    // Only available when an experiment is running.
+    GROW?: typeof GROW;
+}
