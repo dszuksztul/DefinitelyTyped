@@ -31,7 +31,7 @@ type CSSSelector = string;
     }
 
     export interface Report {
-        [key: string]: any;
+        [key: string]: string | number | boolean;
     }
 
     export interface Reporter {

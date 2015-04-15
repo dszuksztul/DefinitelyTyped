@@ -27,8 +27,6 @@ metrics.addReporter(function (navigationEvent) {
 
 metrics.addReporter(function (navigationEvent) {
     return {
-        "array": <any[]>[],
-        "object": {},
         "number": 1,
         "boolean": true,
         "string": ""
