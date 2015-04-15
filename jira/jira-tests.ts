@@ -26,3 +26,6 @@ WRM.data.claim("foo");
 
 // JIRA browser metrics
 var commitId: string = WRM.data.claim("com.atlassian.jira.browsermetrics:browser-metrics-integration.scm-commit-id");
+
+// AJS
+var contextPath: string = AJS.contextPath();

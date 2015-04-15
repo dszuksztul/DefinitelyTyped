@@ -165,3 +165,14 @@ interface Window {
     // Only available when an experiment is running.
     GROW?: typeof GROW;
 }
+
+/*
+ * AJS namespace
+ */
+declare module AJS {
+    export function contextPath(): string;
+}
+
+interface Window {
+    AJS: typeof AJS;
+}
