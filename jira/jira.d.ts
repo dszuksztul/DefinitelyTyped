@@ -126,7 +126,7 @@ declare module WRM {
         export function claim(key: string): any;
     }
 
-    export function require(dependencies: Array<string>, callback?: Function);
+    export function require(dependencies: Array<string>, callback?: Function): any;
 }
 
 /*
