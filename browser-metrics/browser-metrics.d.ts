@@ -6,7 +6,10 @@
 ///<reference path="../es6-promise/es6-promise.d.ts"/>
 ///<reference path="../jquery/jquery.d.ts"/>
 declare module 'internal/browser-metrics' {
-type CSSSelector = string;
+    type CSSSelector = string;
+    type Millis = number;
+    type MillisSinceNavigationStart = number;
+    type Key = string;
 
     export interface ReadyRule {
         selector: CSSSelector;
@@ -15,30 +18,41 @@ type CSSSelector = string;
 
     export interface StartOptions {
         isInitial?: boolean;
-        key: string;
+        key: Key;
         ready?: (CSSSelector | CSSSelector[] | ReadyRule[]);
+        threshold?: Millis;
     }
 
     export interface EndOptions {
-        key: string;
+        key: Key;
     }
 
-    export interface NavigationEvent {
+    export interface Transition {
         isInitial: boolean;
-        key: string;
-        end: number;
-        start: number;
+        key: Key;
+        end: MillisSinceNavigationStart;
+        start: MillisSinceNavigationStart;
+        threshold: Millis;
     }
 
     export interface Report {
-        [key: string]: string | number | boolean;
+        [key: string]: any;
     }
 
     export interface Reporter {
-        (navigationEvent: NavigationEvent): Report | Promise<Report> | JQueryPromise<Report>;
+        (transition: Transition): Report | Promise<Report> | JQueryPromise<Report>;
+    }
+
+    export interface Beacon {
+        report: Report;
+    }
+
+    export interface Subscriber {
+        (beacon: Beacon): void;
     }
 
     export function start(options: StartOptions): void;
     export function end(options: EndOptions): void;
     export function addReporter(reporter: Reporter): void;
+    export function subscribe(subscriber: Subscriber): void;
 }

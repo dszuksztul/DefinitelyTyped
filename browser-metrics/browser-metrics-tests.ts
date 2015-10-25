@@ -7,6 +7,11 @@ metrics.start({
 
 metrics.start({
     key: "foo",
+    threshold: 1000
+});
+
+metrics.start({
+    key: "foo",
     ready: ".something"
 });
 
@@ -17,15 +22,16 @@ metrics.start({
 
 metrics.end({key: "foo"});
 
-metrics.addReporter(function (navigationEvent) {
-    navigationEvent.end;
-    navigationEvent.start;
-    navigationEvent.isInitial;
-    navigationEvent.key;
+metrics.addReporter((transition) => {
+    transition.end;
+    transition.start;
+    transition.isInitial;
+    transition.key;
+    transition.threshold;
     return {};
 });
 
-metrics.addReporter(function (navigationEvent) {
+metrics.addReporter((transition) => {
     return {
         "number": 1,
         "boolean": true,
@@ -33,14 +39,18 @@ metrics.addReporter(function (navigationEvent) {
     };
 });
 
-metrics.addReporter(function (navigationEvent) {
-    return new Promise<metrics.Report>(function (resolve) {
+metrics.addReporter((transition) => {
+    return new Promise<metrics.Report>((resolve) => {
         resolve({});
     });
 });
 
-metrics.addReporter(function (navigationEvent) {
+metrics.addReporter((transition) => {
     var deferred = jQuery.Deferred();
     deferred.resolve({});
     return deferred.promise();
+});
+
+metrics.subscribe((beacon: metrics.Beacon) => {
+    beacon.report;
 });
