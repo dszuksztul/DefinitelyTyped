@@ -173,6 +173,15 @@ interface Window {
  */
 declare module AJS {
     export function contextPath(): string;
+
+    export module EventQueue {
+        interface Event {
+            name: string;
+            properties?: Object;
+        }
+
+        export function push(event: Event): void;
+    }
 }
 
 interface Window {
