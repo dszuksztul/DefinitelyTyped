@@ -3,6 +3,7 @@
 // Definitions by: Bradley Ayers <https://github.com/bradleyayers>
 // Definitions: https://github.com/bradleyayers/DefinitelyTyped
 
+/// <reference path="../atlassian-analytics/atlassian-analytics.d.ts" />
 /// <reference path="../jquery/jquery.d.ts" />
 
 /*
@@ -153,37 +154,8 @@ declare module "jira/util/events" {
 }
 
 /*
- * Growth experiments
- */
-
-declare module GROW {
-    /**
-     * The names of experiments that are currently running.
-     */
-    export var experimentId: string[];
-}
-
-interface Window {
-    // Only available when an experiment is running.
-    GROW?: typeof GROW;
-}
-
-/*
  * AJS namespace
  */
 declare module AJS {
     export function contextPath(): string;
-
-    export module EventQueue {
-        interface Event {
-            name: string;
-            properties?: Object;
-        }
-
-        export function push(event: Event): void;
-    }
-}
-
-interface Window {
-    AJS: typeof AJS;
 }
