@@ -124,7 +124,7 @@ declare module "jira/util/events" {
  */
 declare module WRM {
     export module data {
-        export function claim(key: string): any;
+        export function claim(key: string, success?:(value, key)=>void, fail?:(value, key)=>void): any;
     }
 
     export function require(dependencies: Array<string>, callback?: Function): any;

@@ -1,4 +1,4 @@
-/// <reference path="jira.d.ts" />
+/// <reference path="atlassian-jira.d.ts" />
 import Dialog = require("jira/dialog/dialog");
 import Events = require("jira/util/events");
 import aui = require("aui");
@@ -23,6 +23,7 @@ Events.bind("aui-dropdown2-show", (event: JQueryEventObject, options: aui.AUIDro
 
 // WRM
 WRM.data.claim("foo");
+WRM.data.claim("foo", (fooValue) => {}, () => {});
 
 // JIRA browser metrics
 var commitId: string = WRM.data.claim("com.atlassian.jira.browsermetrics:browser-metrics-integration.scm-commit-id");
